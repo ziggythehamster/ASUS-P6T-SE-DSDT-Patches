@@ -6,6 +6,14 @@ begin
 Device (HDEF)\n
 {\n
     Name (_ADR, 0x001B0000)\n
+    Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake\n
+    {\n
+        Return (Package (0x02)\n
+        {\n
+            0x0D, \n
+            0x05\n
+        })\n
+    }\n
     Method (_DSM, 4, NotSerialized)\n
     {\n
         Store (Package (0x0A)\n
@@ -23,7 +31,12 @@ Device (HDEF)\n
                 "layout-id",\n
                 Buffer (0x04)\n
                 {\n
-                    0x78, 0x03, 0x00, 0x00\n
+                    0x0C, 0x00, 0x00, 0x00\n
+                },\n
+                "platformFamily",\n
+                Buffer (One)\n
+                {\n
+                     0x00\n
                 },\n
                 "device-type",\n
                 Buffer (0x11)\n
