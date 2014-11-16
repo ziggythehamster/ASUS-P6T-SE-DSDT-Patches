@@ -1,0 +1,6 @@
+# Make the ACPI table treat Darwin like Windows Vista/7
+into method label OSYS code_regex (Windows\s2006)
+replace_matched
+begin
+Darwin
+end
